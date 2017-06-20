@@ -19,14 +19,13 @@ import java.util.stream.Stream;
 public class Controller {
     @FXML private DatePicker calendar;
 
-    @FXML private ListView<String> breakfast;
-    @FXML private ListView<String> lunch;
-    @FXML private ListView<String> dinner;
-    @FXML private ListView<String> snack;
+    @FXML @SuppressWarnings("unused") private ListView<String> breakfast;
+    @FXML @SuppressWarnings("unused") private ListView<String> lunch;
+    @FXML @SuppressWarnings("unused") private ListView<String> dinner;
+    @FXML @SuppressWarnings("unused") private ListView<String> snack;
 
     @FXML public void initialize() {
         calendar.setValue(LocalDate.now());
-        calendar.setOnAction(this::search);
         calendar.setConverter(new DateConverter());
     }
 

@@ -1,22 +1,21 @@
-<?import javafx.scene.layout.BorderPane?>
-
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.ListView?>
+
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="pe.chalk.meal.Controller">
     <top>
         <HBox alignment="CENTER" spacing="10">
             <padding><Insets top="10" right="10" left="10" /></padding>
 
-            <DatePicker fx:id="calendar" />
+            <DatePicker fx:id="calendar" onAction="#search" />
             <Button text="검색" onAction="#search" />
         </HBox>
     </top>
