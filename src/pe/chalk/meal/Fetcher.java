@@ -32,10 +32,10 @@ public class Fetcher {
     private static final Map<String, Map<String, List<String>>> CACHE = new HashMap<>();
 
     public static Map<String, List<String>> getMeal(Date date) throws IOException, ScriptException {
-        final String api = String.format(MEAL_API, FORMAT.format(date));
-        if (CACHE.containsKey(api)) return CACHE.get(api);
+        final String query = FORMAT.format(date);
+        if (CACHE.containsKey(query)) return CACHE.get(query);
 
-        final URL url = new URL(api);
+        final URL url = new URL(String.format(MEAL_API, query));
         final StringBuilder buffer = new StringBuilder();
 
         try (final BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()))) {
@@ -55,10 +55,11 @@ public class Fetcher {
         final Map<String, List<String>> result = KEYS.stream().collect(Collectors.toMap(
                 Function.identity(),
                 key -> Arrays.stream(json.get(key).toString().split("[/*]"))
-                        .map(String::trim)
-                        .collect(Collectors.toList())));
+                        .map(String::trim).collect(Collectors.toList())));
 
-        CACHE.put(api, result);
+        CACHE.put(query, result);
+        System.out.printf("%s %s%n", query, result);
+
         return result;
     }
 }
