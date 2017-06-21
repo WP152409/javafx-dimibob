@@ -1,49 +1,55 @@
-<?import javafx.geometry.Insets?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="pe.chalk.meal.Controller">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.chalk.meal.Controller">
     <top>
         <HBox alignment="CENTER" spacing="10">
-            <padding><Insets top="10" right="10" left="10" /></padding>
-
-            <DatePicker fx:id="calendar" onAction="#search" />
-            <Button text="검색" onAction="#search" />
+            <padding><Insets left="10" right="10" top="10" /></padding>
+            <DatePicker fx:id="calendar" onAction="#search" promptText="날짜를 선택하세요" />
         </HBox>
     </top>
 
     <center>
-        <GridPane vgap="10" hgap="10" alignment="CENTER">
-            <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+        <StackPane fx:id="stack">
+            <GridPane alignment="CENTER" hgap="10" vgap="10">
+                <padding><Insets bottom="10" left="10" right="10" top="10" /></padding>
 
-            <VBox GridPane.columnIndex="0" GridPane.rowIndex="0">
-                <Label text="아침" />
-                <ListView fx:id="breakfast" />
-            </VBox>
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="아침">
+                        <font><Font size="16.0" /></font>
+                        <padding><Insets bottom="5.0" /></padding>
+                    </Label>
+                    <ListView fx:id="breakfast" />
+                </VBox>
 
-            <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
-                <Label text="점심" />
-                <ListView fx:id="lunch" />
-            </VBox>
+                <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="점심">
+                        <font><Font size="16.0" /></font>
+                        <padding><Insets bottom="5.0" /></padding>
+                    </Label>
+                    <ListView fx:id="lunch" />
+                </VBox>
 
-            <VBox GridPane.columnIndex="0" GridPane.rowIndex="1">
-                <Label text="저녁" />
-                <ListView fx:id="dinner" />
-            </VBox>
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="저녁">
+                        <font><Font size="16.0" /></font>
+                        <padding><Insets bottom="5.0" /></padding>
+                    </Label>
+                    <ListView fx:id="dinner" />
+                </VBox>
 
-
-            <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
-                <Label text="간식" />
-                <ListView fx:id="snack" />
-            </VBox>
-        </GridPane>
+                <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="간식">
+                        <font><Font size="16.0" /></font>
+                        <padding><Insets bottom="5.0" /></padding>
+                    </Label>
+                    <ListView fx:id="snack" />
+                </VBox>
+            </GridPane>
+        </StackPane>
     </center>
 </BorderPane>
