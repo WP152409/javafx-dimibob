@@ -54,7 +54,9 @@ public class Fetcher {
 
         final Map<String, List<String>> result = KEYS.stream().collect(Collectors.toMap(
                 Function.identity(),
-                key -> Arrays.asList(json.get(key).toString().split("[/*]"))));
+                key -> Arrays.stream(json.get(key).toString().split("[/*]"))
+                        .map(String::trim)
+                        .collect(Collectors.toList())));
 
         CACHE.put(api, result);
         return result;
